@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS mudita;
-DROP USER mudita;
+DROP USER mudita@localhost;
 CREATE DATABASE mudita;
-CREATE USER 'mudita'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL  ON mudita.* TO 'mudita';
+CREATE USER mudita@localhost IDENTIFIED BY 'password';
+GRANT ALL  ON mudita.* TO mudita@localhost;
 
 USE mudita;
 
@@ -62,14 +62,46 @@ CREATE TABLE drugtest_type
 
 CREATE TABLE drugtest
 (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     test_date DATE NOT NULL,
     drugtest_type_id BIGINT REFERENCES drugtest_type(id),
     patient_id BIGINT REFERENCES patient(id),
     positive_result BOOLEAN NOT NULL,
     notes VARCHAR(1024),
-    PRIMARY KEY (test_date, drugtest_type_id, patient_id)
+    UNIQUE (test_date, drugtest_type_id, patient_id)
 );
 
+CREATE TABLE drugtest_substance
+(
+    drugtest_id BIGINT NOT NULL REFERENCES drugtest(id),
+    substance_id INTEGER REFERENCES substance(id),
+    PRIMARY KEY (drugtest_id, substance_id)
+);
 
+CREATE TABLE substance
+(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
     
+-- Data Fixtures
+
+INSERT INTO substance(name) 
+VALUES ('Methamphetamine'), ('Amphetamine'), ('Mandrax'), ('THC'), ('Opiates');
+
+INSERT INTO drugtest_type(name, description)
+VALUES ('5-panel urine drug test', 'The five panel urine drug test is an indicator for the following substances: metamphetamine, amphetamine, mandrax, THC and opiates');
+
+-- Test Fixtures
+
+INSERT INTO school(name, description, notes) 
+VALUES ('Test School 1', 'A test school', 'Notes for the test school');
+
+INSERT INTO patient(case_number, initials, school_id, grade, class, 
+                    referral_date, admission_date, discharge_estimate_date, discharge_date,
+                    program_completed, notes)
+VALUES ('TESTCASE', 'ABC', 1, 12, 'F', NOW(), NOW(), NOW() + 60, NULL, FALSE, 'Test patient notes');
+
+
+
 

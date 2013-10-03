@@ -9,10 +9,10 @@ class Main extends CI_Controller {
         /* Standard Libraries of codeigniter are required */
         $this->load->database();
         $this->load->helper('url');
-#        $this->load->library('ion_auth');
+        $this->load->library('ion_auth');
 
-#        if (!$this->ion_auth->logged_in())
-#            redirect('auth/login');
+        if (!$this->ion_auth->logged_in())
+            redirect('auth/login');
         /* ------------------ */ 
 
         $this->load->library('grocery_CRUD');
@@ -22,8 +22,9 @@ class Main extends CI_Controller {
 
     public function index()
     {
-        echo "<h1>Welcome to the world of Codeigniter</h1>";//Just an example to ensure that we get into the function
-        die();
+        redirect('main/patient');
+#        echo "<h1>Welcome to the world of Codeigniter</h1>";//Just an example to ensure that we get into the function
+#        die();
     }
 
     function _example_output($output = null)

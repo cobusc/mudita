@@ -39,7 +39,8 @@ a:hover
         <b>Administrative</b> |
         <a href='<?php echo site_url('main/school')?>'>Schools</a> |
         <a href='<?php echo site_url('main/drugtest_type')?>'>Drug Test Types</a> | 
-        <a href='<?php echo site_url('main/substance')?>'>Substances</a> 
+        <a href='<?php echo site_url('main/substance')?>'>Substances</a> |
+        <a href='<?php echo site_url('auth/logout')?>'>Logout</a> 
  
     </div>
 <!-- End of header-->

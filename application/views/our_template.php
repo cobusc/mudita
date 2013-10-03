@@ -32,25 +32,37 @@ a:hover
 </head>
 <body>
 <!-- Beginning header -->
-    <div>
-        <b>Operational</b> |
-        <a href='<?php echo site_url('main/patient')?>'>Patients</a> | 
-        <a href='<?php echo site_url('main/drugtest')?>'>Drug Tests</a> |
-        <b>Administrative</b> |
-        <a href='<?php echo site_url('main/school')?>'>Schools</a> |
-        <a href='<?php echo site_url('main/drugtest_type')?>'>Drug Test Types</a> | 
-        <a href='<?php echo site_url('main/substance')?>'>Substances</a> |
-        <a href='<?php echo site_url('auth/logout')?>'>Logout</a> 
- 
-    </div>
+    <div></div>
 <!-- End of header-->
-    <div style='height:20px;'></div>  
-    <div>
-        <?php echo $output; ?>
- 
+
+    <div style="width:100%; margin:0; padding:0">
+        <div style="float:left;width:10%; border: thin solid black">
+            <hr>
+            <b>Operational</b>
+            <hr>
+            <a href='<?php echo site_url('main/patient')?>'>Patients</a> <br/> 
+            <a href='<?php echo site_url('main/drugtest')?>'>Drug Tests</a><br/>
+            <hr>
+            <b>Administrative</b><br/>
+            <hr>
+            <a href='<?php echo site_url('main/school')?>'>Schools</a> <br/>
+            <a href='<?php echo site_url('main/drugtest_type')?>'>Drug Test Types</a> <br/> 
+            <a href='<?php echo site_url('main/substance')?>'>Substances</a> <br/>
+            <hr>
+            <b>Reports</b><br/>
+            <hr>
+            Coming soon
+            <hr>
+            <a href='<?php echo site_url('auth/logout')?>'>Logout</a><br/><br/>
+        </div>
+        <div style=" float:left;width:89%">
+            <?php echo $output; ?>
+        </div>
     </div>
-        <!-- Beginning footer -->
-<div>&copy; Cobus Carstens</div>
+    <div style="clear:both">
+    </div>
+<!-- Beginning footer -->
+    <div>&copy; Cobus Carstens</div>
 <!-- End of Footer -->
 </body>
 </html>

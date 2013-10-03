@@ -33,12 +33,13 @@ a:hover
 <body>
 <!-- Beginning header -->
     <div>
-        <a href='<?php echo site_url('examples/offices_management')?>'>Offices</a> | 
-        <a href='<?php echo site_url('examples/employees_management')?>'>Employees</a> |
-        <a href='<?php echo site_url('examples/customers_management')?>'>Customers</a> |
-        <a href='<?php echo site_url('examples/orders_management')?>'>Orders</a> |
-        <a href='<?php echo site_url('examples/products_management')?>'>Products</a> | 
-        <a href='<?php echo site_url('examples/film_management')?>'>Films</a>
+        <b>Operational</b> |
+        <a href='<?php echo site_url('main/patient')?>'>Patients</a> | 
+        <a href='<?php echo site_url('main/drugtest')?>'>Drug Tests</a> |
+        <b>Administrative</b> |
+        <a href='<?php echo site_url('main/school')?>'>Schools</a> |
+        <a href='<?php echo site_url('main/drugtest_type')?>'>Drug Test Types</a> | 
+        <a href='<?php echo site_url('main/substance')?>'>Substances</a> 
  
     </div>
 <!-- End of header-->
@@ -48,7 +49,7 @@ a:hover
  
     </div>
         <!-- Beginning footer -->
-<div>Footer</div>
+<div>&copy; Cobus Carstens</div>
 <!-- End of Footer -->
 </body>
 </html>

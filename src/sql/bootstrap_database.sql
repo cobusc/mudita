@@ -81,7 +81,8 @@ CREATE TABLE drugtest_substance
 CREATE TABLE substance
 (
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL UNIQUE
+    name VARCHAR(50) NOT NULL UNIQUE,
+    description VARCHAR(1024)
 );
     
 -- Data Fixtures

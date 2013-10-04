@@ -95,8 +95,14 @@ VALUES ('5-panel urine drug test', 'The five panel urine drug test is an indicat
 
 -- Test Fixtures
 
-INSERT INTO school(name, description, notes) 
-VALUES ('Test School 1', 'A test school', 'Notes for the test school');
+INSERT INTO school(name, description, notes) VALUES
+('Tuscany Glen High', '', ''),
+('Malibu High', '', ''),
+('Kleinvlei High', '', ''),
+('Eersteriver High', '', ''),
+('Blackheath High', '', ''),
+('Forest Heights High', '', ''),
+('Test School 1', 'A test school', 'Notes for the test school');
 
 INSERT INTO patient(case_number, initials, school_id, grade, class, 
                     referral_date, admission_date, discharge_estimate_date, discharge_date,

@@ -16,7 +16,7 @@ class Main extends CI_Controller {
         /* ------------------ */ 
 
         $this->load->library('grocery_CRUD');
-        $this->grocery_crud->set_theme('flexigrid'); // datatables or flexigrid
+        $this->grocery_crud->set_theme('twitter-bootstrap'); // datatables or flexigrid or twitter-bootstrap
 
     }
 

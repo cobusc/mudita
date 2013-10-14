@@ -13,7 +13,7 @@ foreach($css_files as $file): ?>
  
         <script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
- 
+
 <!-- <style type='text/css'>
 body
 {
@@ -72,7 +72,7 @@ a:hover
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href='<?php echo site_url('reports/current_patients')?>'>Current Patients</a></li>
+                            <li><a href='<?php echo site_url('reports/test_report')?>'>Test Report</a></li>
                             <li><a href="#">Item2</a></li>
                             <li><a href="#">Item3</a></li>
                         </ul>

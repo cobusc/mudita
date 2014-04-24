@@ -59,9 +59,6 @@ CREATE TABLE drugtest
     UNIQUE (test_date, drugtest_type_id, patient_id)
 );
 
---ALTER TABLE drugtest DROP COLUMN positive_result;
---ALTER TABLE drugtest ADD COLUMN result_type_id INTEGER NOT NULL REFERENCES drugtest_result_type(id);
-
 CREATE TABLE substance
 (
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -134,7 +131,7 @@ VALUES ('5-panel urine drug test', 'The five panel urine drug test is an indicat
 INSERT INTO drugtest_result_type(name, description)
 VALUES ('Positive', 'At least one substance was found'),
        ('Negative', 'No substances were found'),
-       ('Inconclusive', 'The test was inconclusive');
+       ('Invalid', 'The test was invalid');
 
 -- Test Fixtures
 

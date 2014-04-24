@@ -54,20 +54,6 @@ a:hover
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-th-large"></i>Administrative
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href='<?php echo site_url('main/school')?>'>Schools</a></li>
-                            <li><a href='<?php echo site_url('main/drugtest_type')?>'>Drug Test Types</a></li>
-                            <li><a href='<?php echo site_url('main/substance')?>'>Substances</a></li>
-                            <li><a href='<?php echo site_url('main/individual_session_type')?>'>Individual Session Types</a></li>
-                            <li><a href='<?php echo site_url('main/group_session_type')?>'>Group Session Types</a></li>
-                            <li><a href='<?php echo site_url('main/facilitator')?>'>Facilitators</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-th-large"></i>Reporting
                             <b class="caret"></b>
                         </a>
@@ -77,6 +63,36 @@ a:hover
                             <li><a href="#">Item3</a></li>
                         </ul>
                     </li>
+
+<?php if ($this->ion_auth->is_admin()): ?>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-th-large"></i>Administrative
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href='<?php echo site_url('main/school')?>'>Schools</a></li>
+                            <li><a href='<?php echo site_url('main/drugtest_type')?>'>Drug Test Types</a></li>
+                            <li><a href='<?php echo site_url('main/drugtest_result_type')?>'>Drug Test Result Types</a></li>
+                            <li><a href='<?php echo site_url('main/substance')?>'>Substances</a></li>
+                            <li><a href='<?php echo site_url('main/individual_session_type')?>'>Individual Session Types</a></li>
+                            <li><a href='<?php echo site_url('main/group_session_type')?>'>Group Session Types</a></li>
+                            <li><a href='<?php echo site_url('main/facilitator')?>'>Facilitators</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-th-large"></i>User Management
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href='<?php echo site_url('auth/')?>'>List</a></li>
+                            <li><a href='<?php echo site_url('auth/create_user')?>'>New</a></li>
+                        </ul>
+                    </li>
+<?php endif; ?>
+
                     <li><a href="#">About</a></li>
                     <li><a href='<?php echo site_url('auth/logout')?>'>Logout (<?php echo $this->session->userdata('username');?>)</a></li>
                 </ul>

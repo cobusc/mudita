@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS mudita;
-DROP USER mudita@localhost;
-CREATE DATABASE mudita;
-CREATE USER mudita@localhost IDENTIFIED BY 'password';
-GRANT ALL  ON mudita.* TO mudita@localhost;
+-- DROP DATABASE IF EXISTS mudita;
+-- DROP USER mudita@localhost;
+-- CREATE DATABASE mudita;
+-- CREATE USER mudita@localhost IDENTIFIED BY 'password';
+-- GRANT ALL  ON mudita.* TO mudita@localhost;
 
-USE mudita;
+-- USE mudita;
 
 SET storage_engine=InnoDB;
 
@@ -13,10 +13,7 @@ CREATE TABLE school
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(256) NOT NULL UNIQUE,
     description VARCHAR(1024),
-    notes VARCHAR(1024),
-
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    notes VARCHAR(1024)
 );
 
 CREATE TABLE patient 
@@ -44,16 +41,26 @@ CREATE TABLE drugtest_type
     description VARCHAR(1024)
 );
 
+CREATE TABLE drugtest_result_type
+(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    description VARCHAR(1024)
+);
+
 CREATE TABLE drugtest
 (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     test_date DATE NOT NULL,
     drugtest_type_id BIGINT REFERENCES drugtest_type(id),
     patient_id BIGINT REFERENCES patient(id),
-    positive_result BOOLEAN NOT NULL,
+    result_type_id INTEGER NOT NULL REFERENCES drugtest_result_type(id),
     notes VARCHAR(1024),
     UNIQUE (test_date, drugtest_type_id, patient_id)
 );
+
+--ALTER TABLE drugtest DROP COLUMN positive_result;
+--ALTER TABLE drugtest ADD COLUMN result_type_id INTEGER NOT NULL REFERENCES drugtest_result_type(id);
 
 CREATE TABLE substance
 (
@@ -123,6 +130,11 @@ VALUES ('Methamphetamine'), ('Amphetamine'), ('Mandrax'), ('THC'), ('Opiates');
 
 INSERT INTO drugtest_type(name, description)
 VALUES ('5-panel urine drug test', 'The five panel urine drug test is an indicator for the following substances: metamphetamine, amphetamine, mandrax, THC and opiates');
+
+INSERT INTO drugtest_result_type(name, description)
+VALUES ('Positive', 'At least one substance was found'),
+       ('Negative', 'No substances were found'),
+       ('Inconclusive', 'The test was inconclusive');
 
 -- Test Fixtures
 

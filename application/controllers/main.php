@@ -71,7 +71,22 @@ class Main extends CI_Controller {
         $crud = $this->grocery_crud;
         $crud->set_table('drugtest_type');
         $crud->set_subject("Drug Test Type");
-        $crud->columns('name','description', 'created_at', 'updated_at'); // On list pages
+        $crud->columns('name','description'); // On list pages
+        $crud->fields('name', 'description'); // Used on edit page
+        //$crud->display_as('school_id','School');
+        $crud->required_fields('name', 'description');
+
+        $output = $this->grocery_crud->render();
+
+        $this->_example_output($output);
+    }
+
+    public function drugtest_result_type()
+    {
+        $crud = $this->grocery_crud;
+        $crud->set_table('drugtest_result_type');
+        $crud->set_subject("Drug Test Result Type");
+        $crud->columns('name','description'); // On list pages
         $crud->fields('name', 'description'); // Used on edit page
         //$crud->display_as('school_id','School');
         $crud->required_fields('name', 'description');
@@ -91,11 +106,11 @@ class Main extends CI_Controller {
         $crud->display_as('test_date','Date Performed');
         $crud->display_as('drugtest_type_id', 'Drug Test Type');
         $crud->display_as('patient_id','Patient');
-        $crud->display_as('positive_result', 'Result');
-        $crud->field_type('positive_result', 'enum', array('Negative','Positive'));
+        $crud->display_as('result_type_id', 'Result');
         $crud->set_relation('patient_id', 'patient', '[{case_number}] {initials}');
         $crud->set_relation('drugtest_type_id','drugtest_type','name', null, 'name ASC');
-        $crud->required_fields('test_date', 'drugtest_type_id', 'patient_id', 'positive_result');
+        $crud->set_relation('result_type_id','drugtest_result_type','name', null, 'name ASC');
+        $crud->required_fields('test_date', 'drugtest_type_id', 'patient_id', 'result_type_id');
 
         $crud->set_relation_n_n('substances_found', 'drugtest_substance', 'substance', 'drugtest_id', 'substance_id', 'name');
 

@@ -74,7 +74,7 @@ body {
 
   <p>
     <?php echo lang('login_password_label', 'password');?>
-    <?php echo form_input(array('name'=>'password', 'id'=>'password', 'class'=>'form-control', 'placeholder'=>'Password'));?>
+    <?php echo form_input(array('type'=>'password', 'name'=>'password', 'id'=>'password', 'class'=>'form-control', 'placeholder'=>'Password'));?>
   </p>
 
   <p>
